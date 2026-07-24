@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Quotation - Wan Mahadi</title>
+    <!-- Social media icons library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 450px;
+            padding: 30px 20px 40px;
+        }
+
+        /* Back Button Link */
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #00AAA5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            transition: opacity 0.2s;
+        }
+        .btn-back:hover {
+            opacity: 0.8;
+        }
+
+        /* Contact Form Section */
+        .form-section {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        .form-section h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.25rem;
+            color: #1e293b;
+            text-align: center;
+        }
+        .form-section p {
+            margin: 0 0 20px 0;
+            font-size: 0.85rem;
+            color: #64748b;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #475569;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #00AAA5;
+        }
+
+        /* Checkbox styles */
+        .checkbox-group {
+            background-color: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            color: #334155;
+            cursor: pointer;
+            font-weight: normal !important;
+        }
+        .checkbox-label input[type="checkbox"] {
+            width: auto; 
+            margin: 0;
+            transform: scale(1.1);
+            accent-color: #00AAA5; 
+        }
+
+        .btn-submit {
+            background-color: #00AAA5;
+            color: #ffffff;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .btn-submit:hover {
+            background-color: #008f8a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Back Link to Homepage -->
+        <a href="index.html" class="btn-back">
+            <i class="fa-solid fa-arrow-left"></i> Back to Links
+        </a>
+
+        <!-- Form Section -->
+        <div class="form-section">
+            <h3>PruBSN Takaful Consultation</h3>
+            <p>Leave your details below to instantly generate your quote details.</p>
+            
+            <form id="takafulForm">
+                <!-- 1. Full Name -->
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Your Name as per IC" required>
+                </div>
+                
+                <!-- 2. Phone Number -->
+                <div class="form-group">
+                    <label for="phone">Phone Number (WhatsApp)</label>
+                    <input type="tel" id="phone" placeholder="e.g. 0123456789" required>
+                </div>
+
+                <!-- 3. Date of Birth -->
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" required>
+                </div>
+
+                <!-- 4. Occupation -->
+                <div class="form-group">
+                    <label for="occupation">Occupation</label>
+                    <input type="text" id="occupation" placeholder="e.g. Engineer, Teacher" required>
+                </div>
+
+                <!-- 5. Smoking Status -->
+                <div class="form-group">
+                    <label for="smoking">Smoking/Vaping Status</label>
+                    <select id="smoking" required>
+                        <option value="" disabled selected>Please select...</option>
+                        <option value="Yes">Yes, I smoke/vape</option>
+                        <option value="No">No, I do not smoke/vape</option>
+                    </select>
+                </div>
+
+                <!-- 6. Coverage Choice -->
+                <div class="form-group">
+                    <label>Coverage of Interest (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="coverage" value="Hibah Takaful"> Hibah Takaful
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="coverage" value="Medical Card"> Medical Card
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="coverage" value="Critical Illness"> Critical Illness
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="coverage" value="Education Plan"> Education Plan
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="coverage" value="Retirement Plan"> Retirement Plan
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="coverage" value="General Enquiry"> General Enquiry
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Optional Message -->
+                <div class="form-group">
+                    <label for="message">Your Message (Optional)</label>
+                    <textarea id="message" rows="3" placeholder="Any specific requirements?"></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <i class="fab fa-whatsapp"></i> Send via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- WHATSAPP REDIRECTION SCRIPT -->
+    <script>
+        document.getElementById('takafulForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const dob = document.getElementById('dob').value;
+            const occupation = document.getElementById('occupation').value;
+            const smoking = document.getElementById('smoking').value;
+            const optionalMsg = document.getElementById('message').value || "None";
+
+            const checkedBoxes = document.querySelectorAll('input[name="coverage"]:checked');
+            let coverages = [];
+            checkedBoxes.forEach(function(box) {
+                coverages.push(box.value);
+            });
+            const coverageList = coverages.length > 0 ? coverages.join(', ') : 'General Enquiry';
+
+            const whatsappMessage = 
+                `Salam Sejahtera Tuan Wan Mahadi,\n\n` +
+                `Saya berminat untuk mendapatkan consultation PruBSN Takaful. Berikut adalah butiran saya:\n\n` +
+                `*Nama penuh:* ${name}\n` +
+                `*No. Telefon:* ${phone}\n` +
+                `*Tarikh Lahir:* ${dob}\n` +
+                `*Pekerjaan:* ${occupation}\n` +
+                `*Status Merokok/Vape:* ${smoking}\n` +
+                `*Perlindungan yang Diminati:* ${coverageList}\n` +
+                `*Mesej Tambahan:* ${optionalMsg}\n\n` +
+                `Mohon bantu saya sediakan sebut harga (quotation) yang sesuai. Terima kasih!`;
+
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappUrl = `https://wa.me/60126560299?text=${encodedMessage}`;
+
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+
+</body>
+</html>
