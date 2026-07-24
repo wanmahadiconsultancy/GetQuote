@@ -141,41 +141,41 @@
 
         <!-- Form Section -->
         <div class="form-section">
-            <h3>PruBSN Takaful Consultation</h3>
+            <h3>Takaful Consultation</h3>
             <p>Leave your details below to instantly generate your quote details.</p>
             
             <form id="takafulForm">
                 <!-- 1. Full Name -->
                 <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" placeholder="Your Name as per IC" required>
+                    <label for="name">Nama Penuh</label>
+                    <input type="text" id="name" placeholder="Nama seperti Kad Pengenalan" required>
                 </div>
                 
                 <!-- 2. Phone Number -->
                 <div class="form-group">
-                    <label for="phone">Phone Number (WhatsApp)</label>
-                    <input type="tel" id="phone" placeholder="e.g. 0123456789" required>
+                    <label for="phone">Nombor Telefon (WhatsApp)</label>
+                    <input type="tel" id="phone" placeholder="Contoh: 0123456789" required>
                 </div>
 
                 <!-- 3. Date of Birth -->
                 <div class="form-group">
-                    <label for="dob">Date of Birth</label>
+                    <label for="dob">Tarikh Lahir</label>
                     <input type="date" id="dob" required>
                 </div>
 
                 <!-- 4. Occupation -->
                 <div class="form-group">
-                    <label for="occupation">Occupation</label>
-                    <input type="text" id="occupation" placeholder="e.g. Engineer, Teacher" required>
+                    <label for="occupation">Pekerjaan</label>
+                    <input type="text" id="occupation" placeholder="Contoh: Engineer, Guru" required>
                 </div>
 
                 <!-- 5. Smoking Status -->
                 <div class="form-group">
-                    <label for="smoking">Smoking/Vaping Status</label>
+                    <label for="smoking">Status Merokok/Vape</label>
                     <select id="smoking" required>
                         <option value="" disabled selected>Please select...</option>
-                        <option value="Yes">Yes, I smoke/vape</option>
-                        <option value="No">No, I do not smoke/vape</option>
+                        <option value="Tidak">Tidak, Saya tidak merokok/vape</option>
+                        <option value="Ya">Ya, saya merokok/vape</option>
                     </select>
                 </div>
 
@@ -187,19 +187,19 @@
                             <input type="checkbox" name="coverage" value="Hibah Takaful"> Hibah Takaful
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="coverage" value="Medical Card"> Medical Card
+                            <input type="checkbox" name="coverage" value="Kad Perubatan"> Kad Perubatan
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="coverage" value="Critical Illness"> Critical Illness
+                            <input type="checkbox" name="coverage" value="Sakit Kritikal"> Sakit Kritikal
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="coverage" value="Education Plan"> Education Plan
+                            <input type="checkbox" name="coverage" value="Pelan Pendidikan"> Pelan Pendidikan
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="coverage" value="Retirement Plan"> Retirement Plan
+                            <input type="checkbox" name="coverage" value="Pelan Persaraan"> Pelan Persaraan
                         </label>
                         <label class="checkbox-label">
-                            <input type="checkbox" name="coverage" value="General Enquiry"> General Enquiry
+                            <input type="checkbox" name="coverage" value="Pertanyaan Umum"> Pertanyaan Umum
                         </label>
                     </div>
                 </div>
@@ -237,8 +237,8 @@
             const coverageList = coverages.length > 0 ? coverages.join(', ') : 'General Enquiry';
 
             const whatsappMessage = 
-                `Salam Sejahtera Tuan Wan Mahadi,\n\n` +
-                `Saya berminat untuk mendapatkan consultation PruBSN Takaful. Berikut adalah butiran saya:\n\n` +
+                `Salam Sejahtera Wan Mahadi,\n\n` +
+                `Saya berminat untuk mendapatkan sebut harga (quotation) Takaful. Berikut adalah butiran saya:\n\n` +
                 `*Nama penuh:* ${name}\n` +
                 `*No. Telefon:* ${phone}\n` +
                 `*Tarikh Lahir:* ${dob}\n` +
@@ -246,7 +246,7 @@
                 `*Status Merokok/Vape:* ${smoking}\n` +
                 `*Perlindungan yang Diminati:* ${coverageList}\n` +
                 `*Mesej Tambahan:* ${optionalMsg}\n\n` +
-                `Mohon bantu saya sediakan sebut harga (quotation) yang sesuai. Terima kasih!`;
+                `Mohon bantu saya sediakan sebut harga yang sesuai. Terima kasih!`;
 
             const encodedMessage = encodeURIComponent(whatsappMessage);
             const whatsappUrl = `https://wa.me/60126560299?text=${encodedMessage}`;
