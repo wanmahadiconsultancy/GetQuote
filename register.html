@@ -1,0 +1,938 @@
+<!DOCTYPE html> <html lang="ms"> <head>    <meta charset="UTF-8">    <meta name="viewport" <!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PruBSN Takaful - Pendaftaran Takaful (Takaful Enrollment Form)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+--pru-red: #ED1B2E;
+--bsn-teal: #00615F;
+--bg-color: #f4f7f6;
+--form-bg: #ffffff;
+--border-color: #cccccc;
+--text-color: #333333;
+}
+
+body {
+font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-color);
+line-height: 1.6;
+margin: 0;
+padding: 0; display: flex;
+flex-direction: column; min-height: 100vh;
+}
+
+.header {
+background-color: #fff; padding: 25px 20px; text-align: center;
+box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-bottom: 4px solid var(--pru-red);
+}
+.logo {
+max-width: 220px; height: auto;
+margin-bottom: 15px;
+}
+
+.header h1 {
+color: var(--bsn-teal); margin: 0;
+font-size: 1.5rem; font-weight: 700;
+}
+
+.header p { margin: 5px 0 0;
+font-size: 0.95rem; color: #555;
+}
+ 
+.container {
+max-width: 800px; margin: 30px auto; padding: 0 20px;
+flex-grow: 1;
+}
+
+.form-container {
+background: var(--form-bg); padding: 30px;
+border-radius: 8px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.section-title {
+font-size: 1.15rem; color: var(--bsn-teal);
+border-bottom: 2px solid var(--pru-red); padding-bottom: 8px;
+margin-top: 35px; margin-bottom: 20px; font-weight: 600;
+}
+
+.section-title:first-child { margin-top: 0;
+}
+
+.form-group {
+margin-bottom: 20px;
+}
+
+.form-row { display: grid;
+grid-template-columns: 1fr 1fr; gap: 20px;
+}
+label {
+display: block; font-weight: 600;
+margin-bottom: 8px; color: #444;
+font-size: 0.9rem;
+}
+
+.long-label {
+line-height: 1.4; margin-bottom: 12px;
+}
+
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"], select,
+ 
+textarea {
+width: 100%; padding: 12px;
+border: 1px solid var(--border-color); border-radius: 6px;
+font-family: 'Inter', sans-serif; font-size: 0.95rem;
+box-sizing: border-box; transition: all 0.3s ease; background-color: #fafafa;
+}
+
+input:focus, select:focus, textarea:focus { outline: none;
+border-color: var(--bsn-teal); background-color: #fff;
+box-shadow: 0 0 0 3px rgba(0, 97, 95, 0.1);
+}
+
+textarea {
+resize: vertical; min-height: 80px;
+}
+
+.note-box {
+background-color: #fff8f8;
+border-left: 4px solid var(--pru-red); padding: 15px;
+margin-bottom: 25px; border-radius: 0 4px 4px 0; font-size: 0.9rem;
+color: #444;
+}
+
+.document-checklist { background-color: #f2f7f6; border: 1px solid #c2d9d7; padding: 20px;
+border-radius: 6px; margin-bottom: 25px;
+}
+.document-checklist p { margin-top: 0;
+font-weight: 600; color: var(--bsn-teal);
+}
+
+.document-checklist ul { margin-bottom: 0; padding-left: 20px;
+}
+
+.ekyc-note {
+margin-top: 15px; font-size: 0.85rem; color: #555;
+ 
+background-color: #e8f4f3;
+padding: 15px; border-radius: 4px;
+border-left: 3px solid var(--bsn-teal);
+}
+
+.ekyc-note a {
+color: var(--bsn-teal); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 8px;
+}
+
+.ekyc-note a:hover {
+text-decoration: underline;
+}
+
+.submit-btn {
+background-color: var(--bsn-teal); color: #fff;
+border: none; padding: 16px 20px; font-size: 1.1rem; font-weight: 600; border-radius: 6px; width: 100%; cursor: pointer;
+transition: background-color 0.3s; display: flex;
+justify-content: center; align-items: center; gap: 10px;
+}
+
+.submit-btn:hover { background-color: #004745;
+}
+.footer {
+text-align: center; padding: 30px 20px;
+background-color: #e9ecef; color: #666;
+font-size: 0.85rem; margin-top: auto;
+border-top: 1px solid #ddd;
+}
+
+.sub-title {
+font-size: 1rem; color: #555;
+margin-bottom: 15px; margin-top: 0;
+font-weight: 600;
+}
+ 
+.divider {
+border: 0;
+border-top: 1px dashed #ccc; margin: 25px 0;
+}
+
+.sub-section-box { background-color: #fafafa;
+border: 1px dashed var(--border-color); padding: 15px;
+border-radius: 6px; margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+.form-row {
+grid-template-columns: 1fr; gap: 0;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+<img src="company_logo.JPG" alt="PruBSN Takaful Logo" class="logo">
+<h1>Borang Pendaftaran Takaful</h1>
+<p>PruBSN Takaful Enrollment Form</p>
+</div>
+
+<div class="container">
+<div class="form-container">
+<form id="takafulForm" onsubmit="submitToWhatsApp(event)">
+
+ 
+
+
+anda.
+ 
+<div class="note-box">
+Sila lengkapkan butiran di bawah dengan tepat untuk melancarkan proses permohonan Takaful
+</div>
+<!-- MAKLUMAT PERIBADI -->
+<div class="section-title">1. Maklumat Peribadi</div>
+<div class="form-group">
+<label>Nama Penuh (Seperti dalam MyKad) *</label>
+<input type="text" id="nama" required>
+</div>
+
+<div class="form-group">
+<label>No. IC *</label>
+<input type="text" id="ic" required placeholder="Contoh: 090724-14-2784">
+</div>
+
+<div class="form-row">
+<div class="form-group">
+<label>Tarikh Lahir *</label>
+<input type="date" id="tarikh_lahir" required>
+</div>
+<div class="form-group">
+ 
+<label>No. Telefon *</label>
+<input type="tel" id="no_tel" required placeholder="Contoh: 0123456789">
+</div>
+</div>
+
+<div class="form-group">
+<label>Emel *</label>
+<input type="email" id="emel" required>
+</div>
+
+<div class="form-group">
+<label>Alamat Rumah *</label>
+<textarea id="alamat" required></textarea>
+</div>
+
+<div class="form-row">
+<div class="form-group">
+<label>Warganegara *</label>
+<select id="warganegara" required>
+<option value="">Sila Pilih...</option>
+<option value="Malaysia">Malaysia</option>
+<option value="Penduduk Tetap">Penduduk Tetap</option>
+<option value="Bukan Warganegara">Bukan Warganegara</option>
+</select>
+</div>
+<div class="form-group">
+<label>Agama *</label>
+<select id="agama" required>
+<option value="">Sila Pilih...</option>
+<option value="Islam">Islam</option>
+<option value="Buddhist">Buddhist</option>
+<option value="Hindu">Hindu</option>
+<option value="Kristian">Kristian</option>
+<option value="Lain-lain">Lain-lain</option>
+</select>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group">
+<label>Tinggi (cm) *</label>
+<input type="number" id="tinggi" required placeholder="Contoh: 170">
+</div>
+<div class="form-group">
+<label>Berat (kg) *</label>
+<input type="number" id="berat" required placeholder="Contoh: 70">
+</div>
+</div>
+
+<div class="form-group">
+<label>Status Merokok *</label>
+<select id="merokok" required onchange="updateMerokokFields()">
+<option value="">Sila Pilih...</option>
+<option value="Merokok">Merokok</option>
+<option value="Tidak Merokok">Tidak Merokok</option>
+</select>
+</div>
+ 
+<!-- Butiran Merokok (Hanya Muncul Jika "Merokok") -->
+<div id="merokok_details_section" class="sub-section-box" style="display: none;">
+<div class="form-group">
+<label>Rokok / Vape? *</label>
+<select id="jenis_merokok" onchange="updateJenisMerokokFields()">
+<option value="">Sila Pilih...</option>
+<option value="Rokok">Rokok</option>
+<option value="Vape">Vape</option>
+</select>
+</div>
+<!-- Jika Rokok -->
+<div id="rokok_details" class="form-row" style="display: none;">
+<div class="form-group" style="margin-bottom: 0;">
+<label>Berapa batang sehari? *</label>
+<input type="number" id="bilangan_rokok" min="1" placeholder="Contoh: 10">
+</div>
+<div class="form-group" style="margin-bottom: 0;">
+<label>Sudah berapa tahun anda merokok? *</label>
+<input type="number" id="tahun_merokok" min="1" placeholder="Contoh: 5">
+</div>
+</div>
+
+<!-- Jika Vape -->
+<div id="vape_details" style="display: none;">
+<div class="form-group" style="margin-bottom: 0;">
+<label>Sudah berapa tahun vape? *</label>
+<input type="number" id="tahun_vape" min="1" placeholder="Contoh: 3">
+</div>
+</div>
+</div>
+
+<!-- MAKLUMAT PEKERJAAN -->
+<div class="section-title">2. Maklumat Pekerjaan</div>
+<div class="form-row">
+<div class="form-group">
+<label>Nama Majikan / Syarikat *</label>
+<input type="text" id="majikan" required>
+</div>
+<div class="form-group">
+<label>Jawatan *</label>
+<input type="text" id="jawatan" required>
+</div>
+</div>
+
+<div class="form-group">
+<label>Keterangan Ringkas Pekerjaan *</label>
+<textarea id="keterangan_kerja" required placeholder="Contoh: Membuat kerja-kerja admin di pejabat..."></textarea>
+</div>
+<div class="form-group">
+<label>Alamat Majikan *</label>
+<textarea id="alamat_majikan" required></textarea>
+</div>
+ 
+<div class="form-group">
+<label>Pendapatan Tahunan (RM) *</label>
+<input type="number" id="pendapatan" required placeholder="Contoh: 45000">
+</div>
+
+<!-- MAKLUMAT BANK & PEMBAYARAN -->
+<div class="section-title">3. Maklumat Kewangan & Pembayaran</div>
+<div class="form-row">
+<div class="form-group">
+<label>Nama Bank (Untuk tujuan tuntutan) *</label>
+<input type="text" id="nama_bank" required placeholder="Contoh: Maybank">
+</div>
+<div class="form-group">
+<label>No. Akaun Bank *</label>
+<input type="text" id="no_akaun" required>
+</div>
+</div>
+
+<div class="form-row">
+<div class="form-group">
+<label>Jenis Akaun *</label>
+<select id="jenis_akaun" required>
+<option value="">Sila Pilih...</option>
+<option value="Islamik">Islamik</option>
+<option value="Konvensional">Konvensional</option>
+</select>
+</div>
+<div class="form-group">
+<label>Cara Bayaran Sumbangan Bulanan *</label>
+<select id="cara_bayaran" required>
+<option value="">Sila Pilih...</option>
+<option value="Autodebit Akaun">Autodebit Akaun</option>
+<option value="Kad Debit">Kad Debit</option>
+<option value="Kad Kredit">Kad Kredit</option>
+</select>
+</div>
+</div>
+<!-- MAKLUMAT PENAMA -->
+<div class="section-title">4. Maklumat Penama / Pewaris</div>
+<div class="form-group">
+<label>Berapa Orang Penama? *</label>
+<select id="bilangan_penama" required onchange="updateNomineeFields()">
+<option value="1">1 Penama (100%)</option>
+<option value="2">2 Penama</option>
+<option value="3">3 Penama</option>
+</select>
+</div>
+
+<!-- PENAMA 1 -->
+<div id="nominee_1_section">
+<h4 class="sub-title">Penama 1</h4>
+<div class="form-row">
+<div class="form-group">
+<label>Nama Penama *</label>
+<input type="text" id="penama_1" required>
+ 
+
+
+
+Anak">
+ 
+</div>
+<div class="form-group">
+<label>Hubungan *</label>
+<input type="text" id="hubungan_penama_1" required placeholder="Contoh: Isteri / Suami /
+
+</div>
+</div>
+<div class="form-group">
+<label>Peratusan (%) *</label>
+<input type="number" id="peratus_penama_1" required min="1" max="100" value="100"
+ 
+placeholder="Contoh: 100">
+</div>
+</div>
+
+<!-- PENAMA 2 -->
+<div id="nominee_2_section" style="display: none;">
+<hr class="divider">
+<h4 class="sub-title">Penama 2</h4>
+<div class="form-row">
+<div class="form-group">
+<label>Nama Penama *</label>
+<input type="text" id="penama_2">
+</div>
+<div class="form-group">
+<label>Hubungan *</label>
+<input type="text" id="hubungan_penama_2" placeholder="Contoh: Isteri / Suami / Anak">
+</div>
+</div>
+<div class="form-group">
+<label>Peratusan (%) *</label>
+<input type="number" id="peratus_penama_2" min="1" max="100" placeholder="Contoh: 50">
+</div>
+</div>
+
+<!-- PENAMA 3 -->
+<div id="nominee_3_section" style="display: none;">
+<hr class="divider">
+<h4 class="sub-title">Penama 3</h4>
+<div class="form-row">
+<div class="form-group">
+<label>Nama Penama *</label>
+<input type="text" id="penama_3">
+</div>
+<div class="form-group">
+<label>Hubungan *</label>
+<input type="text" id="hubungan_penama_3" placeholder="Contoh: Isteri / Suami / Anak">
+</div>
+</div>
+<div class="form-group">
+<label>Peratusan (%) *</label>
+<input type="number" id="peratus_penama_3" min="1" max="100" placeholder="Contoh: 30">
+</div>
+</div>
+
+<!-- REKOD KESIHATAN -->
+<div class="section-title">5. Rekod Kesihatan & Kemasukan Wad</div>
+<div class="note-box" style="background-color: #f0f7fc; border-color: #00615F; color: #333;">
+ 
+ini.
+ 
+Pilih "Tiada" jika anda tidak mempunyai sebarang rekod penyakit atau kemasukan ke wad sebelum
+
+</div>
+
+<div class="form-group">
+<label>Jumlah Rekod untuk Diisytiharkan *</label>
+<select id="bilangan_rekod" required onchange="updateHealthFields()">
+<option value="0">Tiada</option>
+<option value="1">1 Rekod</option>
+<option value="2">2 Rekod</option>
+<option value="3">3 Rekod</option>
+</select>
+</div>
+ 
+
+<!-- REKOD KESIHATAN 1 -->
+<div id="rekod_1_section" style="display: none;">
+<h4 class="sub-title">Rekod Kesihatan 1</h4>
+<div class="form-group">
+<label>Penyakit Dihidapi *</label>
+<input type="text" id="penyakit_1">
+</div>
+<div class="form-row">
+<div class="form-group">
+<label>Diwadkan di hospital mana? *</label>
+<input type="text" id="hospital_1">
+</div>
+<div class="form-group">
+<label>Berapa hari di dalam wad? *</label>
+<input type="number" id="hari_wad_1">
+</div>
+</div>
+<div class="form-group">
+<label>Jenis Rawatan (Ubat-ubatan / Pembedahan / Implan) *</label>
+<textarea id="jenis_rawatan_1" placeholder="Contoh: Makan ubat darah tinggi setiap hari / Pembedahan membuang apendiks pada tahun 2020..."></textarea>
+</div>
+<div class="form-group">
+<label>Status Terkini *</label>
+<select id="status_pulih_1">
+<option value="">Sila Pilih...</option>
+<option value="Sudah pulih sepenuhnya">Sudah pulih sepenuhnya</option>
+<option value="Masih mendapatkan rawatan susulan">Masih mendapatkan rawatan susulan</
+ 
+option>
+ 
+
+</select>
+</div>
+</div>
+
+<!-- REKOD KESIHATAN 2 -->
+<div id="rekod_2_section" style="display: none;">
+<hr class="divider">
+<h4 class="sub-title">Rekod Kesihatan 2</h4>
+<div class="form-group">
+<label>Penyakit Dihidapi *</label>
+<input type="text" id="penyakit_2">
+</div>
+<div class="form-row">
+<div class="form-group">
+ 
+<label>Diwadkan di hospital mana? *</label>
+<input type="text" id="hospital_2">
+</div>
+<div class="form-group">
+<label>Berapa hari di dalam wad? *</label>
+<input type="number" id="hari_wad_2">
+</div>
+</div>
+<div class="form-group">
+<label>Jenis Rawatan (Ubat-ubatan / Pembedahan / Implan) *</label>
+<textarea id="jenis_rawatan_2" placeholder="Contoh: Makan ubat mengikut preskripsi doktor..."></textarea>
+</div>
+<div class="form-group">
+<label>Status Terkini *</label>
+<select id="status_pulih_2">
+<option value="">Sila Pilih...</option>
+<option value="Sudah pulih sepenuhnya">Sudah pulih sepenuhnya</option>
+<option value="Masih mendapatkan rawatan susulan">Masih mendapatkan rawatan susulan</
+ 
+option>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+option>
+ 
+
+</select>
+</div>
+</div>
+
+<!-- REKOD KESIHATAN 3 -->
+<div id="rekod_3_section" style="display: none;">
+<hr class="divider">
+<h4 class="sub-title">Rekod Kesihatan 3</h4>
+<div class="form-group">
+<label>Penyakit Dihidapi *</label>
+<input type="text" id="penyakit_3">
+</div>
+<div class="form-row">
+<div class="form-group">
+<label>Diwadkan di hospital mana? *</label>
+<input type="text" id="hospital_3">
+</div>
+<div class="form-group">
+<label>Berapa hari di dalam wad? *</label>
+<input type="number" id="hari_wad_3">
+</div>
+</div>
+<div class="form-group">
+<label>Jenis Rawatan (Ubat-ubatan / Pembedahan / Implan) *</label>
+<textarea id="jenis_rawatan_3" placeholder="Contoh: Rawatan susulan fisioterapi..."></textarea>
+</div>
+<div class="form-group">
+<label>Status Terkini *</label>
+<select id="status_pulih_3">
+<option value="">Sila Pilih...</option>
+<option value="Sudah pulih sepenuhnya">Sudah pulih sepenuhnya</option>
+<option value="Masih mendapatkan rawatan susulan">Masih mendapatkan rawatan susulan</
+
+</select>
+</div>
+</div>
+ 
+<!-- SEJARAH KESIHATAN KELUARGA -->
+<div class="section-title">6. Sejarah Kesihatan Keluarga (Penyakit Keturunan)</div>
+<div class="form-group">
+<label class="long-label">Adakah dikalangan keluarga terdekat (ibu, ayah atau adik-beradik kandung) disahkan menghidapi penyakit keturunan atau penyakit kritikal (contoh: darah tinggi, kencing manis, kegagalan buah pinggang, serangan jantung, kanser atau lain-lain)? Jika ada, sila nyatakan di bawah.</label>
+<textarea id="sejarah_keluarga" placeholder="Contoh: Bapa - Kencing Manis, Ibu - Darah Tinggi. (Tulis 'Tiada' jika tidak berkaitan)"></textarea>
+</div>
+
+<!-- SEJARAH COVID-19 -->
+<div class="section-title">7. Sejarah COVID-19</div>
+
+<div class="form-group">
+<label>Pernahkah anda disahkan positif COVID-19? *</label>
+<select id="positif_covid" required onchange="updateCovidFields()">
+<option value="">Sila Pilih...</option>
+<option value="Ya">Ya</option>
+<option value="Tidak">Tidak</option>
+</select>
+</div>
+
+<!-- Kandungan Lanjut COVID (Hanya Muncul Jika Pilih "Ya") -->
+<div id="covid_details_section" style="display: none;">
+<div class="form-row">
+<div class="form-group">
+<label>Berapa kalikah anda disahkan positif COVID-19? *</label>
+<input type="number" id="kekerapan_covid" min="1" placeholder="Contoh: 2">
+</div>
+<div class="form-group">
+<label>Sila nyatakan bulan dan tahun disahkan positif (BB/TTTT) *</label>
+<input type="text" id="tarikh_covid" placeholder="Contoh: 08/2021" maxlength="7">
+</div>
+</div>
+
+<div class="form-row">
+<div class="form-group">
+<label>Tahap COVID-19? *</label>
+<select id="tahap_covid">
+<option value="">Sila Pilih...</option>
+<option value="Tahap 1">1</option>
+<option value="Tahap 2">2</option>
+<option value="Tahap 3">3</option>
+<option value="Tahap 4">4</option>
+<option value="Tahap 5">5</option>
+</select>
+</div>
+<div class="form-group">
+<label>Pernahkah anda dimasukkan ke hospital untuk sebab ini? *</label>
+<select id="masuk_hospital_covid" onchange="updateCovidHospitalFields()">
+<option value="">Sila Pilih...</option>
+<option value="Ya">Ya</option>
+<option value="Tidak">Tidak</option>
+</select>
+</div>
+</div>
+ 
+<div class="form-group" id="rawatan_covid_section" style="display: none;">
+<label>Jika Ya, apakah rawatan yang telah dijalankan? *</label>
+<select id="rawatan_covid">
+<option value="">Sila Pilih...</option>
+<option value="Bantuan Alat Pernafasan">Bantuan Alat Pernafasan</option>
+<option value="HDU / ICU / ITU / CCU">HDU, ICU, ITU, CCU</option>
+<option value="Ubat Anti-Viral">Ubat Anti-Viral</option>
+<option value="Kuarantin di Wad atau Pusat Kuarantin">Kuarantin di Wad atau Pusat Kuarantin</option>
+</select>
+</div>
+
+ 
+
+
+*</label>
+ 
+<div class="form-group">
+<label>Adakah anda sedang mengalami sebarang kondisi sekarang disebabkan oleh COVID-19?
+
+<textarea id="kondisi_semasa_covid" placeholder="Contoh: Kerap sesak nafas. (Tulis 'Tiada' jika
+ 
+tidak berkaitan)"></textarea>
+</div>
+</div>
+
+<!-- DOKUMEN SOKONGAN -->
+<div class="section-title">8. Dokumen Sokongan</div>
+<div class="document-checklist">
+<p>  ARAHAN PENTING:</p>
+Sebagai pengesahan keselamatan identiti, sila sediakan gambar-gambar berikut untuk dihantar
+<strong>di dalam ruang chat WhatsApp</strong> selepas anda menekan butang Hantar di bawah:
+<ul>
+<li>Gambar MyKad (Muka Depan)</li>
+<li>Gambar MyKad (Muka Belakang)</li>
+<li>Gambar Selfie anda memegang MyKad</li>
+</ul>
+
+<div class="ekyc-note">
+<strong>*Nota:</strong> Langkah penyerahan gambar MyKad dan swafoto (selfie) ini adalah sebahagian daripada proses mandatori <strong>eKYC (Electronic Know Your Customer)</strong> bagi tujuan pengesahan identiti secara digital yang selamat dan sah di sisi undang-undang.
+<br>
+<a href="https://www.bnm.gov.my/-/electronic-know-your-customer-e-kyc-" target="_blank" rel="noopener noreferrer">
+&rarr; Ketahui lebih lanjut mengenai polisi eKYC di portal rasmi Bank Negara Malaysia (BNM)
+</a>
+</div>
+</div>
+<button type="submit" class="submit-btn"> Hantar Permohonan Melalui WhatsApp &rarr;
+</button>
+</form>
+</div>
+</div>
+
+<div class="footer">
+&copy; 2026 Fairuz Samsuddin. Hak Cipta Terpelihara.<br> Pengantara Takaful Berdaftar dengan Prudential BSN Takaful Berhad.
+</div>
+
+<script>
+ 
+// Auto-fill Tarikh Lahir from No. IC
+document.getElementById('ic').addEventListener('input', function(e) { let icVal = e.target.value.replace(/\D/g, '');
+if (icVal.length >= 6) {
+let yy = icVal.substring(0, 2); let mm = icVal.substring(2, 4); let dd = icVal.substring(4, 6);
+
+if (parseInt(mm) > 0 && parseInt(mm) <= 12 && parseInt(dd) > 0 && parseInt(dd) <= 31) { let currentYear = new Date().getFullYear();
+let currentTwoDigitYear = currentYear % 100; let numYy = parseInt(yy);
+
+let fullYear = (numYy <= currentTwoDigitYear) ? (2000 + numYy) : (1900 + numYy); let formattedDate = `${fullYear}-${mm}-${dd}`;
+
+document.getElementById('tarikh_lahir').value = formattedDate;
+}
+}
+});
+
+// Dynamic Merokok Fields function updateMerokokFields() {
+const isMerokok = document.getElementById('merokok').value === 'Merokok'; const section = document.getElementById('merokok_details_section');
+const jenisField = document.getElementById('jenis_merokok');
+
+if (isMerokok) { section.style.display = 'block'; jenisField.required = true;
+} else {
+section.style.display = 'none'; jenisField.required = false; jenisField.value = '';
+updateJenisMerokokFields(); // Reset sub-fields
+}
+}
+function updateJenisMerokokFields() {
+const jenis = document.getElementById('jenis_merokok').value; const rokokSection = document.getElementById('rokok_details'); const vapeSection = document.getElementById('vape_details');
+const bilRokok = document.getElementById('bilangan_rokok'); const tahunRokok = document.getElementById('tahun_merokok'); const tahunVape = document.getElementById('tahun_vape');
+
+if (jenis === 'Rokok') {
+rokokSection.style.display = 'grid'; // Grid untuk .form-row vapeSection.style.display = 'none';
+bilRokok.required = true; tahunRokok.required = true;
+
+tahunVape.required = false; tahunVape.value = '';
+} else if (jenis === 'Vape') { vapeSection.style.display = 'block';
+ 
+rokokSection.style.display = 'none';
+tahunVape.required = true;
+
+bilRokok.required = false; bilRokok.value = ''; tahunRokok.required = false; tahunRokok.value = '';
+} else {
+rokokSection.style.display = 'none'; vapeSection.style.display = 'none'; bilRokok.required = false; bilRokok.value = ''; tahunRokok.required = false; tahunRokok.value = ''; tahunVape.required = false; tahunVape.value = '';
+}
+}
+
+// Auto-format Tarikh COVID-19 untuk letak slash "/" (BB/TTTT) document.getElementById('tarikh_covid').addEventListener('input', function(e) {
+let val = e.target.value.replace(/\D/g, ''); if (val.length > 2) {
+val = val.substring(0, 2) + '/' + val.substring(2, 6);
+}
+e.target.value = val;
+});
+
+// Dynamic Nominee Fields Toggler function updateNomineeFields() {
+const count = parseInt(document.getElementById('bilangan_penama').value);
+
+for (let i = 2; i <= 3; i++) {
+const section = document.getElementById(`nominee_${i}_section`); const p = document.getElementById(`penama_${i}`);
+const h = document.getElementById(`hubungan_penama_${i}`); const pct = document.getElementById(`peratus_penama_${i}`);
+
+if (count >= i) { section.style.display = 'block';
+p.required = true; h.required = true; pct.required = true;
+} else {
+section.style.display = 'none';
+p.required = false; h.required = false; pct.required = false; p.value = ''; h.value = ''; pct.value = '';
+}
+}
+
+if(count === 1) { document.getElementById('peratus_penama_1').value = "100";
+} else {
+document.getElementById('peratus_penama_1').value = "";
+}
+}
+
+// Dynamic Health Records Toggler function updateHealthFields() {
+const count = parseInt(document.getElementById('bilangan_rekod').value);
+
+for (let i = 1; i <= 3; i++) {
+ 
+const section = document.getElementById(`rekod_${i}_section`);
+const p = document.getElementById(`penyakit_${i}`); const h = document.getElementById(`hospital_${i}`); const hw = document.getElementById(`hari_wad_${i}`);
+const jr = document.getElementById(`jenis_rawatan_${i}`); const sp = document.getElementById(`status_pulih_${i}`);
+
+if (count >= i) { section.style.display = 'block';
+p.required = true; h.required = true; hw.required = true; jr.required = true; sp.required = true;
+} else {
+section.style.display = 'none';
+p.required = false; h.required = false; hw.required = false; jr.required = false; sp.required = false; p.value = ''; h.value = ''; hw.value = ''; jr.value = ''; sp.value = '';
+}
+}
+}
+
+// Dynamic COVID-19 Fields Toggler function updateCovidFields() {
+const isPositif = document.getElementById('positif_covid').value === 'Ya'; const section = document.getElementById('covid_details_section');
+const requiredFields = ['kekerapan_covid', 'tarikh_covid', 'tahap_covid', 'masuk_hospital_covid', 'kondisi_semasa_covid'];
+
+if (isPositif) { section.style.display = 'block';
+requiredFields.forEach(id => document.getElementById(id).required = true);
+} else {
+section.style.display = 'none'; requiredFields.forEach(id => {
+const el = document.getElementById(id); el.required = false;
+el.value = '';
+});
+document.getElementById('rawatan_covid').required = false; document.getElementById('rawatan_covid').value = ''; document.getElementById('rawatan_covid_section').style.display = 'none';
+}
+}
+function updateCovidHospitalFields() {
+const isHospital = document.getElementById('masuk_hospital_covid').value === 'Ya'; const section = document.getElementById('rawatan_covid_section');
+const field = document.getElementById('rawatan_covid');
+
+if (isHospital) { section.style.display = 'block'; field.required = true;
+} else {
+section.style.display = 'none'; field.required = false; field.value = '';
+}
+}
+
+function submitToWhatsApp(event) {
+ 
+event.preventDefault();
+
+// Validate Nominee Percentages First
+const nomineeCount = parseInt(document.getElementById('bilangan_penama').value);
+let totalPercentage = parseInt(document.getElementById('peratus_penama_1').value) || 0;
+
+if (nomineeCount >= 2) totalPercentage += parseInt(document.getElementById('peratus_penama_2').value) || 0;
+if (nomineeCount >= 3) totalPercentage += parseInt(document.getElementById('peratus_penama_3').value) || 0;
+
+if (totalPercentage !== 100) {
+alert(`Jumlah peratusan penama mestilah genap 100%. (Jumlah sekarang: ${totalPercentage}%). Sila periksa semula.`);
+return;
+}
+
+// GANTI NOMBOR TELEFON ANDA DI SINI
+const agentPhone = "60176213432";
+const val = (id) => document.getElementById(id).value || "Tiada/Tidak Berkaitan"; const nama = val("nama");
+const tarikhLahir = val("tarikh_lahir"); const noTel = val("no_tel");
+const emel = val("emel"); const alamat = val("alamat");
+const warganegara = val("warganegara"); const agama = val("agama");
+const tinggi = val("tinggi"); const berat = val("berat");
+
+// Smoking Details Builder
+const merokokStatus = val("merokok"); let merokokDetails = merokokStatus;
+
+if (merokokStatus === "Merokok") {
+const jenisMerokok = val("jenis_merokok"); if (jenisMerokok === "Rokok") {
+merokokDetails += ` (Jenis: Rokok | Kuantiti: ${val("bilangan_rokok")} batang/hari | Tempoh: $
+{val("tahun_merokok")} tahun)`;
+} else if (jenisMerokok === "Vape") {
+merokokDetails += ` (Jenis: Vape | Tempoh: ${val("tahun_vape")} tahun)`;
+}
+}
+const majikan = val("majikan"); const jawatan = val("jawatan");
+const ketKerja = val("keterangan_kerja"); const alamatMajikan = val("alamat_majikan"); const pendapatan = val("pendapatan");
+
+const namaBank = val("nama_bank"); const noAkaun = val("no_akaun"); const jenisAkaun = val("jenis_akaun");
+const caraBayaran = val("cara_bayaran");
+ 
+// Build Dynamic Nominee String
+let penamaDetails = `Bilangan Penama: ${nomineeCount}\n`;
+penamaDetails += `[Penama 1] Nama: ${val("penama_1")} | Hubungan: ${val("hubungan_penama_1")} | Bahagian: ${val("peratus_penama_1")}%\n`;
+if (nomineeCount >= 2) {
+penamaDetails += `[Penama 2] Nama: ${val("penama_2")} | Hubungan: ${val("hubungan_penama_2")}
+| Bahagian: ${val("peratus_penama_2")}%\n`;
+}
+if (nomineeCount >= 3) {
+penamaDetails += `[Penama 3] Nama: ${val("penama_3")} | Hubungan: ${val("hubungan_penama_3")}
+| Bahagian: ${val("peratus_penama_3")}%\n`;
+}
+
+// Build Dynamic Health Record String
+const healthCount = parseInt(document.getElementById('bilangan_rekod').value); let healthDetails = `Jumlah Rekod: ${healthCount === 0 ? 'Tiada' : healthCount}\n`;
+
+if (healthCount > 0) {
+for (let i = 1; i <= healthCount; i++) { healthDetails += `\n[Rekod ${i}]\n`;
+healthDetails += `Penyakit: ${val(`penyakit_${i}`)}\n`; healthDetails += `Hospital Dirawat: ${val(`hospital_${i}`)}\n`;
+healthDetails += `Jumlah Hari Diwadkan: ${val(`hari_wad_${i}`)}\n`; healthDetails += `Jenis Rawatan: ${val(`jenis_rawatan_${i}`)}\n`; healthDetails += `Status Terkini: ${val(`status_pulih_${i}`)}\n`;
+}
+}
+
+const sejarahKeluarga = val("sejarah_keluarga");
+
+// Build Dynamic COVID-19 Record String const positifCovid = val("positif_covid");
+let covidDetails = `Pernah positif COVID-19: ${positifCovid}\n`;
+
+if (positifCovid === "Ya") {
+covidDetails += `Kekerapan Positif: ${val("kekerapan_covid")} kali\n`; covidDetails += `Bulan/Tahun Positif (BB/TTTT): ${val("tarikh_covid")}\n`; covidDetails += `Tahap: ${val("tahap_covid")}\n`;
+covidDetails += `Dimasukkan ke Hospital: ${val("masuk_hospital_covid")}\n`;
+if (val("masuk_hospital_covid") === "Ya") {
+covidDetails += `Rawatan Diterima: ${val("rawatan_covid")}\n`;
+}
+
+covidDetails += `Kondisi Semasa akibat COVID-19: ${val("kondisi_semasa_covid")}\n`;
+}
+
+// Construct Message
+const whatsappMessage = `*PERMOHONAN PRUBSN - REMOTE ENROLLMENT*
+
+*1. MAKLUMAT PERIBADI*
+Nama: ${nama}
+Tarikh Lahir: ${tarikhLahir} No. Tel: ${noTel}
+Emel: ${emel} Alamat: ${alamat}
+Warganegara: ${warganegara}
+ 
+Agama: ${agama}
+Tinggi: ${tinggi} cm Berat: ${berat} kg
+Status Merokok: ${merokokDetails}
+
+*2. MAKLUMAT PEKERJAAN*
+Majikan: ${majikan} Jawatan: ${jawatan} Deskripsi Tugas: ${ketKerja}
+Alamat Majikan: ${alamatMajikan} Pendapatan Tahunan: RM ${pendapatan}
+
+*3. MAKLUMAT BANK & BAYARAN*
+Nama Bank (Tuntutan): ${namaBank} No. Akaun: ${noAkaun}
+Jenis Akaun: ${jenisAkaun}
+Cara Bayaran Bulanan: ${caraBayaran}
+
+*4. MAKLUMAT PENAMA*
+${penamaDetails}
+*5. REKOD KESIHATAN*
+${healthDetails}
+*6. SEJARAH KESIHATAN KELUARGA*
+Rekod / Penyakit Keturunan: ${sejarahKeluarga}
+
+*7. SEJARAH COVID-19*
+${covidDetails}
+*8. DOKUMEN*
+_Pelanggan akan menghantar lampiran MyKad (Depan, Belakang & Selfie) di dalam chat ini sebentar lagi._`;
+
+const encodedMessage = encodeURIComponent(whatsappMessage);
+const whatsappLink = `https://wa.me/${agentPhone}?text=${encodedMessage}`; window.open(whatsappLink, '_blank');
+}
+</script>
+</body>
+</html>
