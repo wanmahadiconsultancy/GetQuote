@@ -90,27 +90,28 @@
             font-weight: 500;
         }
 
-        /* Horizontal Side-by-Side Action Buttons */
+        /* Horizontal Action Buttons */
         .action-buttons {
             display: flex;
-            flex-direction: row; /* Arranges buttons horizontally */
-            gap: 10px;
+            flex-direction: row; /* Keeps all 3 buttons in one row */
+            gap: 8px;
             margin-bottom: 35px;
         }
         .btn {
-            flex: 1; /* Shares space equally (50/50) */
+            flex: 1; /* Shares horizontal space equally between all 3 buttons */
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 12px 8px;
-            font-size: 0.85rem;
+            gap: 6px;
+            padding: 12px 6px;
+            font-size: 0.8rem;
             font-weight: 600;
             text-decoration: none;
             border-radius: 30px;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             text-align: center;
+            white-space: nowrap;
         }
         .btn:hover {
             transform: translateY(-2px);
@@ -124,6 +125,10 @@
             background-color: #25D366;
             color: #ffffff;
         }
+        .btn-register {
+            background-color: #ffffff;
+            color: #000000;
+        }
 
         /* Footer Branding Logo */
         .footer-branding {
@@ -132,6 +137,7 @@
             align-items: center;
             gap: 8px;
             opacity: 0.85;
+            margin-top: 10px;
         }
         .footer-logo {
             width: 80px;
@@ -175,7 +181,7 @@
             <div class="tagline">"Lindungi Legasi Anda, Pelihara Yang Paling Bermakna."</div>
         </div>
 
-        <!-- Horizontal Action Buttons -->
+        <!-- Horizontal Action Buttons (3 Side-by-Side) -->
         <div class="action-buttons">
             <a href="quote.html" class="btn btn-form">
                 <i class="fa-regular fa-file-lines"></i> Sebut Harga
@@ -183,10 +189,10 @@
             <a href="https://wa.me/60126560299?text=Salam%20Wan%20Mahadi,%20saya%20ingin%20bertanya%20mengenai%20PruBSN%20Takaful." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
                 <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
-        <div class="action-buttons">
-            <a href="register.html" class="btn btn-form">
-                <i class="fa-regular fa-file-lines"></i> Pendaftaran
+            <a href="register.html" class="btn btn-register">
+                <i class="fa-solid fa-user-plus"></i> Pendaftaran
             </a>
+        </div>
 
         <!-- Footer Brand Logo Signature -->
         <div class="footer-branding">
